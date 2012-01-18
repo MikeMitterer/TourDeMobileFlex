@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+     paddingTop="20" paddingLeft="20" paddingRight="20">
+
+  <fx:Script>
+    
+	  <![CDATA[
+		  import spark.components.Group;
+		  import spark.components.View;
+		  import spark.components.ViewNavigator;
+		  import spark.components.supportClasses.SkinnableComponent;
+		  
+		  //---------------------------------------------------------------------------------------
+		  // private
+		  //---------------------------------------------------------------------------------------
+		  
+		  private function get navigator() : ViewNavigator {
+			  var navi:ViewNavigator = ((parent as Group).parent.parent as View).navigator;
+			  return navi;
+		  }
+	  ]]>
+
+  </fx:Script>
+
+	<s:creationComplete>
+		
+		if (navigator.actionBar.visible )
+		{
+			c.selected = true;
+		}
+	</s:creationComplete>
+	
+	<s:CheckBox id="c" label="ActionBar Visible">
+		<s:change>
+			if (c.selected)
+			{
+			navigator.actionBar.visible = true;
+			}
+			else
+			{
+			navigator.actionBar.visible = false;
+			}
+		</s:change>
+	</s:CheckBox>
+	
+</s:VGroup>
